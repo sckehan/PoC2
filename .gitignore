@@ -1,1 +1,3 @@
 .DS_Store
+.terraform
+k8s-*.yaml
