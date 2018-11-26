@@ -64,4 +64,13 @@ spec:
 - Open the [jMeter Project](test/jmeter-project/tls.jmx) from jMeter 5.0
 - Open Option menu on the jMeter UI, select SSL Manager
 - Select the `client.p12` file then run the test
+- Verify server and client certificates by executing the shell command: 
+  ```sh
+  openssl verify -CAfile ssl/ca.crt ssl/server.crt
+  ```
+  The output should be: ```ssl/server.crt: OK```
+  ```sh
+  openssl verify -CAfile ssl/ca.crt ssl/client.crt
+  ```
+  The out put should be: ```ssl/client.crt: OK```
 - Enter the password of the key file and observe the response from ResultTree node
