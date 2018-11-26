@@ -6,7 +6,7 @@ This is the step-by-step instructions of how to setup the Fluentd for Elasticsea
 - Verify
 
 ### Prerequisites
-- Docker image avaiable on the Private Registry of AliCloud, in this deployment we're using the image we built on `registry.cn-qingdao.aliyuncs.com/gen4/fluentd:latest`. You can build your own docker image from stretch by using this [Dockerfile](docker/Dockerfile) and push the image on to your registry, please refer [this guide](docker/README.md)
+- Docker image available on the Private Registry of AliCloud, in this deployment we're using the image we built on `registry.cn-qingdao.aliyuncs.com/gen4/fluentd:latest`. You can build your own docker image from stretch by using this [Dockerfile](docker/Dockerfile) and push the image on to your registry, please refer [this guide](docker/README.md)
 - You have deployed or provisioned the Elasticsearch from AliCloud, and you're able to get the following information of the existing Elasticsearch instance:
     - Host, e.g. `your_instance.elasticsearch.aliyuncs.com`
     - Scheme, e.g. `http`
