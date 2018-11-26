@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="RabbitMQ Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">100</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1361373100000</longProp>
+        <longProp name="ThreadGroup.end_time">1361373100000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Reply-To Queue Name" enabled="true">
+          <stringProp name="maximumValue">999999999</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">000000000</stringProp>
+          <boolProp name="perThread">false</boolProp>
+          <stringProp name="randomSeed"></stringProp>
+          <stringProp name="variableName">replyToQueue</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Unique ID" enabled="true">
+          <stringProp name="variableName">uniqueId</stringProp>
+          <stringProp name="outputFormat">0000000</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="maximumValue">9999999</stringProp>
+          <stringProp name="randomSeed">3499272</stringProp>
+          <boolProp name="perThread">false</boolProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="RPC Endpoint" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <com.zeroclue.jmeter.protocol.amqp.AMQPPublisher guiclass="com.zeroclue.jmeter.protocol.amqp.gui.AMQPPublisherGui" testclass="com.zeroclue.jmeter.protocol.amqp.AMQPPublisher" testname="AMQP Publisher" enabled="true">
+            <stringProp name="AMQPSampler.Exchange">CustomExchange</stringProp>
+            <boolProp name="AMQPSampler.ExchangeDurable">true</boolProp>
+            <boolProp name="AMQPSampler.ExchangeAutoDelete">false</boolProp>
+            <boolProp name="AMQPSampler.ExchangeRedeclare">false</boolProp>
+            <stringProp name="AMQPSampler.Queue">AMQPQueue</stringProp>
+            <stringProp name="AMQPSampler.RoutingKey">RoutingKey</stringProp>
+            <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
+            <stringProp name="AMQPSampler.MessageTTL"></stringProp>
+            <stringProp name="AMQPSampler.MessageExpires"></stringProp>
+            <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+            <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
+            <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
+            <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
+            <boolProp name="AMQPSampler.Redeclare">false</boolProp>
+            <stringProp name="AMQPSampler.Timeout">10000</stringProp>
+            <stringProp name="AMQPSampler.Iterations">1</stringProp>
+            <stringProp name="AMQPSampler.Host"></stringProp>
+            <stringProp name="AMQPSampler.Port">5672</stringProp>
+            <stringProp name="AMQPSampler.Username">guest</stringProp>
+            <stringProp name="AMQPSampler.Password">guest</stringProp>
+            <stringProp name="AMQPSampler.SSL">false</stringProp>
+            <boolProp name="AMQPPublisher.Persistent">true</boolProp>
+            <boolProp name="AMQPPublisher.UseTx">false</boolProp>
+            <stringProp name="AMQPPublisher.MessageRoutingKey">RoutingKey</stringProp>
+            <stringProp name="AMQPPublisher.Message">{
+&quot;ID&quot;: &quot;${uniqueId}&quot;, 
+&quot;Message&quot;: 
+[
+  {
+    &quot;_id&quot;: &quot;5be7965c5253e12b77950904&quot;,
+    &quot;index&quot;: 0,
+    &quot;guid&quot;: &quot;5cc8ee64-c46d-4688-8e22-f41e57f96dcf&quot;,
+    &quot;isActive&quot;: false,
+    &quot;balance&quot;: &quot;$2,855.46&quot;,
+    &quot;picture&quot;: &quot;http://placehold.it/32x32&quot;,
+    &quot;age&quot;: 40,
+    &quot;eyeColor&quot;: &quot;green&quot;,
+    &quot;name&quot;: &quot;Heather Beck&quot;,
+    &quot;gender&quot;: &quot;female&quot;,
+    &quot;company&quot;: &quot;AQUAMATE&quot;,
+    &quot;email&quot;: &quot;heatherbeck@aquamate.com&quot;,
+    &quot;phone&quot;: &quot;+1 (990) 548-2494&quot;,
+    &quot;address&quot;: &quot;368 Lawn Court, Konterra, California, 8743&quot;,
+    &quot;about&quot;: &quot;Laborum consequat sunt officia pariatur labore id ipsum esse consequat. Veniam do sit dolore cillum cupidatat Lorem proident. In adipisicing anim elit ullamco culpa esse ut id occaecat quis exercitation cupidatat. Aute fugiat exercitation ex eiusmod fugiat ullamco. Aliqua nulla ullamco nisi exercitation veniam esse ea consequat.\r\n&quot;,
+    &quot;registered&quot;: &quot;2015-04-09T02:39:45 -08:00&quot;,
+    &quot;latitude&quot;: 34.5286,
+    &quot;longitude&quot;: -134.234426,
+    &quot;tags&quot;: [
+      &quot;fugiat&quot;,
+      &quot;cillum&quot;,
+      &quot;id&quot;,
+      &quot;Lorem&quot;,
+      &quot;nisi&quot;,
+      &quot;eu&quot;,
+      &quot;veniam&quot;
+    ],
+    &quot;friends&quot;: [
+      {
+        &quot;id&quot;: 0,
+        &quot;name&quot;: &quot;Violet Kelley&quot;
+      },
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Fran Shepard&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Thornton Franks&quot;
+      }
+    ],
+    &quot;greeting&quot;: &quot;Hello, Heather Beck! You have 10 unread messages.&quot;,
+    &quot;favoriteFruit&quot;: &quot;apple&quot;
+  },
+  {
+    &quot;_id&quot;: &quot;5be7965c3a543a13a019a7d9&quot;,
+    &quot;index&quot;: 1,
+    &quot;guid&quot;: &quot;229d2623-e771-4603-9356-bc2291401847&quot;,
+    &quot;isActive&quot;: false,
+    &quot;balance&quot;: &quot;$3,754.58&quot;,
+    &quot;picture&quot;: &quot;http://placehold.it/32x32&quot;,
+    &quot;age&quot;: 31,
+    &quot;eyeColor&quot;: &quot;blue&quot;,
+    &quot;name&quot;: &quot;Bennett Chang&quot;,
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;company&quot;: &quot;PANZENT&quot;,
+    &quot;email&quot;: &quot;bennettchang@panzent.com&quot;,
+    &quot;phone&quot;: &quot;+1 (930) 478-2625&quot;,
+    &quot;address&quot;: &quot;656 Ferris Street, Rockingham, Colorado, 1341&quot;,
+    &quot;about&quot;: &quot;Exercitation excepteur culpa ipsum duis enim sint ullamco reprehenderit pariatur. Ut est aliqua et mollit enim dolore dolore dolor magna nulla. Esse incididunt eu fugiat est esse eiusmod dolore sit laborum consequat sint. Commodo velit aute laboris culpa aute voluptate. Incididunt aute non eu ea tempor incididunt. Minim elit exercitation anim nostrud ad ex voluptate id dolor. Pariatur velit anim sint irure qui ullamco occaecat cupidatat incididunt officia commodo id nostrud.\r\n&quot;,
+    &quot;registered&quot;: &quot;2014-06-13T08:24:01 -08:00&quot;,
+    &quot;latitude&quot;: 82.541594,
+    &quot;longitude&quot;: 40.392404,
+    &quot;tags&quot;: [
+      &quot;non&quot;,
+      &quot;consectetur&quot;,
+      &quot;aute&quot;,
+      &quot;excepteur&quot;,
+      &quot;tempor&quot;,
+      &quot;eiusmod&quot;,
+      &quot;exercitation&quot;
+    ],
+    &quot;friends&quot;: [
+      {
+        &quot;id&quot;: 0,
+        &quot;name&quot;: &quot;Tammie Cortez&quot;
+      },
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Louisa Bennett&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Hebert Lambert&quot;
+      }
+    ],
+    &quot;greeting&quot;: &quot;Hello, Bennett Chang! You have 9 unread messages.&quot;,
+    &quot;favoriteFruit&quot;: &quot;banana&quot;
+  },
+  {
+    &quot;_id&quot;: &quot;5be7965c91d4aed3e66840ff&quot;,
+    &quot;index&quot;: 2,
+    &quot;guid&quot;: &quot;347dbdc5-a0d5-4abf-8928-d22480e96f60&quot;,
+    &quot;isActive&quot;: true,
+    &quot;balance&quot;: &quot;$2,302.37&quot;,
+    &quot;picture&quot;: &quot;http://placehold.it/32x32&quot;,
+    &quot;age&quot;: 25,
+    &quot;eyeColor&quot;: &quot;green&quot;,
+    &quot;name&quot;: &quot;Latisha Kent&quot;,
+    &quot;gender&quot;: &quot;female&quot;,
+    &quot;company&quot;: &quot;AUSTEX&quot;,
+    &quot;email&quot;: &quot;latishakent@austex.com&quot;,
+    &quot;phone&quot;: &quot;+1 (810) 448-2351&quot;,
+    &quot;address&quot;: &quot;589 Ide Court, Allamuchy, Arizona, 2644&quot;,
+    &quot;about&quot;: &quot;Veniam aute cillum anim elit aliqua amet aliqua irure. Ullamco ipsum id laborum anim in culpa excepteur in exercitation eiusmod occaecat. In magna consectetur enim tempor anim voluptate ullamco. Id nisi eiusmod exercitation laboris adipisicing exercitation ex esse. Esse qui tempor irure qui nostrud et. Do velit aliquip commodo excepteur in culpa officia reprehenderit.\r\n&quot;,
+    &quot;registered&quot;: &quot;2017-08-07T03:33:52 -08:00&quot;,
+    &quot;latitude&quot;: -34.534761,
+    &quot;longitude&quot;: -149.349151,
+    &quot;tags&quot;: [
+      &quot;non&quot;,
+      &quot;aliqua&quot;,
+      &quot;voluptate&quot;,
+      &quot;tempor&quot;,
+      &quot;Lorem&quot;,
+      &quot;adipisicing&quot;,
+      &quot;est&quot;
+    ],
+    &quot;friends&quot;: [
+      {
+        &quot;id&quot;: 0,
+        &quot;name&quot;: &quot;Chapman Tyler&quot;
+      },
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Henry Logan&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Goff Frederick&quot;
+      }
+    ],
+    &quot;greeting&quot;: &quot;Hello, Latisha Kent! You have 10 unread messages.&quot;,
+    &quot;favoriteFruit&quot;: &quot;banana&quot;
+  },
+  {
+    &quot;_id&quot;: &quot;5be7965c183db21e7ef92a0c&quot;,
+    &quot;index&quot;: 3,
+    &quot;guid&quot;: &quot;9408d4dc-89bf-44fe-87a3-c74db4d49357&quot;,
+    &quot;isActive&quot;: true,
+    &quot;balance&quot;: &quot;$3,691.48&quot;,
+    &quot;picture&quot;: &quot;http://placehold.it/32x32&quot;,
+    &quot;age&quot;: 20,
+    &quot;eyeColor&quot;: &quot;green&quot;,
+    &quot;name&quot;: &quot;Myers Sosa&quot;,
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;company&quot;: &quot;TURNABOUT&quot;,
+    &quot;email&quot;: &quot;myerssosa@turnabout.com&quot;,
+    &quot;phone&quot;: &quot;+1 (874) 538-2921&quot;,
+    &quot;address&quot;: &quot;279 Noel Avenue, Bannock, Puerto Rico, 6944&quot;,
+    &quot;about&quot;: &quot;Esse ipsum aute et nisi culpa deserunt commodo duis non. Ipsum ad cupidatat sint aliqua officia do duis ea esse officia ullamco proident nostrud adipisicing. Magna culpa non sint eiusmod amet id excepteur esse aute dolore esse officia. Est anim officia minim cillum incididunt incididunt ullamco sit est aliquip laboris fugiat. Aliqua irure quis do cillum cupidatat minim. Velit ad sunt magna excepteur velit velit ea est consectetur.\r\n&quot;,
+    &quot;registered&quot;: &quot;2014-05-16T10:23:37 -08:00&quot;,
+    &quot;latitude&quot;: 62.536667,
+    &quot;longitude&quot;: -179.33628,
+    &quot;tags&quot;: [
+      &quot;fugiat&quot;,
+      &quot;officia&quot;,
+      &quot;consequat&quot;,
+      &quot;sit&quot;,
+      &quot;qui&quot;,
+      &quot;id&quot;,
+      &quot;id&quot;
+    ],
+    &quot;friends&quot;: [
+      {
+        &quot;id&quot;: 0,
+        &quot;name&quot;: &quot;Morrison Santiago&quot;
+      },
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Andrea Robles&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Hensley Gutierrez&quot;
+      }
+    ],
+    &quot;greeting&quot;: &quot;Hello, Myers Sosa! You have 9 unread messages.&quot;,
+    &quot;favoriteFruit&quot;: &quot;apple&quot;
+  },
+  {
+    &quot;_id&quot;: &quot;5be7965ccb44dc492e3f9a8e&quot;,
+    &quot;index&quot;: 4,
+    &quot;guid&quot;: &quot;00060f4b-5f5d-4b29-a5b6-3ecb05e0ecb3&quot;,
+    &quot;isActive&quot;: true,
+    &quot;balance&quot;: &quot;$1,679.36&quot;,
+    &quot;picture&quot;: &quot;http://placehold.it/32x32&quot;,
+    &quot;age&quot;: 30,
+    &quot;eyeColor&quot;: &quot;green&quot;,
+    &quot;name&quot;: &quot;Levine Warner&quot;,
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;company&quot;: &quot;EARWAX&quot;,
+    &quot;email&quot;: &quot;levinewarner@earwax.com&quot;,
+    &quot;phone&quot;: &quot;+1 (836) 422-3697&quot;,
+    &quot;address&quot;: &quot;900 Hart Street, Crayne, Virginia, 8005&quot;,
+    &quot;about&quot;: &quot;Incididunt enim ipsum ea officia in nisi voluptate ea dolore Lorem. Commodo adipisicing ex aliqua deserunt cillum est. Excepteur ipsum do consequat amet irure sint fugiat mollit deserunt amet. Nostrud fugiat cupidatat est labore incididunt. Anim adipisicing magna fugiat velit non qui labore esse. Non fugiat est labore nisi adipisicing mollit sunt reprehenderit labore nisi ea sunt officia anim. Exercitation consequat labore fugiat duis quis.\r\n&quot;,
+    &quot;registered&quot;: &quot;2014-11-15T09:44:15 -08:00&quot;,
+    &quot;latitude&quot;: 31.619834,
+    &quot;longitude&quot;: -150.232018,
+    &quot;tags&quot;: [
+      &quot;velit&quot;,
+      &quot;ad&quot;,
+      &quot;aliquip&quot;,
+      &quot;exercitation&quot;,
+      &quot;qui&quot;,
+      &quot;anim&quot;,
+      &quot;labore&quot;
+    ],
+    &quot;friends&quot;: [
+      {
+        &quot;id&quot;: 0,
+        &quot;name&quot;: &quot;Janna Haley&quot;
+      },
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Ernestine Crawford&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Roth Leach&quot;
+      }
+    ],
+    &quot;greeting&quot;: &quot;Hello, Levine Warner! You have 9 unread messages.&quot;,
+    &quot;favoriteFruit&quot;: &quot;banana&quot;
+  }
+]
+}</stringProp>
+            <stringProp name="AMQPPublisher.MessageType">PublisherType</stringProp>
+            <stringProp name="AMQPPublisher.ReplyToQueue">jMeter_${__threadNum}_${replyToQueue}</stringProp>
+            <stringProp name="AMQPPublisher.CorrelationId">${uniqueId}</stringProp>
+            <stringProp name="AMQPPublisher.ContentType"></stringProp>
+            <stringProp name="AMQPPublisher.MessageId"></stringProp>
+            <elementProp name="AMQPPublisher.Headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="WHOIS" elementType="Argument">
+                  <stringProp name="Argument.name">WHOIS</stringProp>
+                  <stringProp name="Argument.value">RABBITMQ</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </com.zeroclue.jmeter.protocol.amqp.AMQPPublisher>
+          <hashTree/>
+          <com.zeroclue.jmeter.protocol.amqp.AMQPConsumer guiclass="com.zeroclue.jmeter.protocol.amqp.gui.AMQPConsumerGui" testclass="com.zeroclue.jmeter.protocol.amqp.AMQPConsumer" testname="AMQP Consumer" enabled="false">
+            <stringProp name="AMQPSampler.Exchange">CustomExchange</stringProp>
+            <boolProp name="AMQPSampler.ExchangeDurable">true</boolProp>
+            <boolProp name="AMQPSampler.ExchangeAutoDelete">false</boolProp>
+            <boolProp name="AMQPSampler.ExchangeRedeclare">false</boolProp>
+            <stringProp name="AMQPSampler.Queue">AMQPQueue</stringProp>
+            <stringProp name="AMQPSampler.RoutingKey">RoutingKey</stringProp>
+            <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
+            <stringProp name="AMQPSampler.MessageTTL"></stringProp>
+            <stringProp name="AMQPSampler.MessageExpires"></stringProp>
+            <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+            <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
+            <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
+            <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
+            <boolProp name="AMQPSampler.Redeclare">false</boolProp>
+            <stringProp name="AMQPSampler.Timeout">10000</stringProp>
+            <stringProp name="AMQPSampler.Iterations">1</stringProp>
+            <stringProp name="AMQPSampler.Host"></stringProp>
+            <stringProp name="AMQPSampler.Port">5672</stringProp>
+            <stringProp name="AMQPSampler.Username">guest</stringProp>
+            <stringProp name="AMQPSampler.Password">guest</stringProp>
+            <stringProp name="AMQPSampler.SSL">false</stringProp>
+            <boolProp name="AMQPConsumer.ReadResponse">true</boolProp>
+            <stringProp name="AMQPConsumer.PrefetchCount">0</stringProp>
+            <stringProp name="AMQPConsumer.ReceiveTimeout">10000</stringProp>
+            <stringProp name="AMQPConsumer.PurgeQueue">false</stringProp>
+            <stringProp name="AMQPConsumer.AutoAck">true</stringProp>
+            <boolProp name="AMQPConsumer.UseTx">false</boolProp>
+          </com.zeroclue.jmeter.protocol.amqp.AMQPConsumer>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Respones" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
