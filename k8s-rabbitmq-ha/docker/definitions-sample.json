@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "name": "guest",
+      "password": "guest",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "policies": [
+    {
+      "vhost": "/",
+      "name": "ha-all",
+      "pattern": ".*",
+      "definition": {
+        "ha-mode": "all",
+        "ha-sync-mode": "automatic",
+        "ha-sync-batch-size": 1
+      }
+    }
+  ]
+}
