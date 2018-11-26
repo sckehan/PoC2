@@ -12,7 +12,7 @@ This is the step-by-step instructions of how to setup the RabbitMQ HA on AliClou
 ```sh
 git clone git@github.managed-from.net:IBMChinaPlayground/PoC2.git
 ```
-- Docker image avaiable on the Private Registry of AliCloud, in this deployment we're using the image we built on `registry.cn-qingdao.aliyuncs.com/gen4/rabbitmq-ha:latest`. You can build your own docker image from stretch by using this [Dockerfile](docker/Dockerfile) and push the image on to your registry, please refer [this guide](docker/README.md)
+- Docker image available on the Private Registry of AliCloud, in this deployment we're using the image we built on `registry.cn-qingdao.aliyuncs.com/gen4/rabbitmq-ha:latest`. You can build your own docker image from stretch by using this [Dockerfile](docker/Dockerfile) and push the image on to your registry, please refer [this guide](docker/README.md)
 - Please [setup NAS](https://help.aliyun.com/document_detail/27526.html) and get the ```mount URL``` (refer [this link](https://help.aliyun.com/document_detail/60431.html)) and put it in ```deployment.yaml``` where it declares the mount URL of the NAS Server, e.g. see code below under #TODO
 ```yaml
 containers:
