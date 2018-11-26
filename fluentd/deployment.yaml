@@ -68,15 +68,15 @@ spec:
           - name: FLUENT_UID
             value: "0"
           - name:  FLUENT_ELASTICSEARCH_HOST
-            value: "es-cn-0pp0uy1ce000kmk4x.elasticsearch.aliyuncs.com"
+            value: "your_instance.elasticsearch.aliyuncs.com"
           - name:  FLUENT_ELASTICSEARCH_PORT
             value: "9200"
           - name: FLUENT_ELASTICSEARCH_SCHEME
             value: "http"
           - name: FLUENT_ELASTICSEARCH_USER
-            value: "elastic"
+            value: "your_username"
           - name: FLUENT_ELASTICSEARCH_PASSWORD
-            value: "Mima1234"
+            value: "your_password"
           - name: FLUENT_ELASTICSEARCH_SSL_VERIFY
             value: "false"
           - name: FLUENT_ELASTICSEARCH_K8S_SSL_VERIFY
