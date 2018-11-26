@@ -15,6 +15,6 @@ kubectl get pods
 ```
 
 ### Deployment guide
-- [Rabbitmq High Availability](rabbitmq-ha/)
+- [Rabbitmq High Availability](k8s-rabbitmq-ha/)
+- [Fluentd](k8s-fluentd/)
 - [TLS Certificate for AliCloud Kubernetes Ingress](tls-certificates/)
-- [Fluentd](fluentd/)
