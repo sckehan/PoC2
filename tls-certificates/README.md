@@ -2,7 +2,7 @@
 This is for generating the AliCloud Ingress certificate to enable the [Mutual Authentication](https://en.wikipedia.org/wiki/Mutual_authentication). The script is tested under macOS Mojave.
 
 ### Prerequisites
-- Install OpenSSL, please refer to [Wiki]((https://wiki.openssl.org/index.php/Compilation_and_Installation)) or [GitHub](https://github.com/openssl/openssl/blob/master/INSTALL)
+- Install OpenSSL, please refer to [Wiki](https://wiki.openssl.org/index.php/Compilation_and_Installation) or [GitHub](https://github.com/openssl/openssl/blob/master/INSTALL)
 
 ### Generate certificates
 - Execute shell command as below:
