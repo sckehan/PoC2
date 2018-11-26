@@ -8,7 +8,7 @@ This is for generating the AliCloud Ingress certificate to enable the [Mutual Au
 - Execute shell command as below:
 ```sh
 chmod +x generate-certificate.sh
-generate-certificate.sh
+./generate-certificate.sh
 ```
 - Follow the prompts and enter the values of:
 ```sh
