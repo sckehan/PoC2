@@ -43,13 +43,13 @@ spec:
             - name: PROVISIONER_NAME
               value: alicloud/nas
             - name: NFS_SERVER
-              value: xxxxxxxxxx-xxxxx.cn-beijing.nas.aliyuncs.com # TODO: Please update your mount URL of NAS
+              value: xxxxxxxxxx-xxxxx.cn-beijing.nas.aliyuncs.com # @TODO: Please update your mount URL of NAS
             - name: NFS_PATH
               value: /
       volumes:
         - name: nfs-client-root
           nfs:
-            server: xxxxxxxxxx-xxxxx.cn-beijing.nas.aliyuncs.com # TODO: Please update your mount URL of NAS
+            server: xxxxxxxxxx-xxxxx.cn-beijing.nas.aliyuncs.com # @TODO: Please update your mount URL of NAS
             path: /
 ---
 # Service Account for the RabbitMQ
@@ -335,11 +335,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    # @TODO, change hostname prefix and keep the domain from AliCloud (*.cb63acdf806e5464a88157679edf29697.cn-beijing.alicontainer.com)
+    # @TODO, change hostname prefix and keep the domain from AliCloud (your_rabbitmq_management_ui_name.your_k8s_instance_name.cn-beijing.alicontainer.com)
     # e.g. rabbitmq-portal.cb63acdf806e5464a88157679edf29697.cn-beijing.alicontainer.com
-    # or keep it as it is if there is no used prefix
     - host: >-
-        rabbitmq-ha-management.cb63acdf806e5464a88157679edf29697.cn-beijing.alicontainer.com
+        your_rabbitmq_management_ui_name.your_k8s_instance_name.cn-beijing.alicontainer.com
       http:
         paths:
           - backend:
